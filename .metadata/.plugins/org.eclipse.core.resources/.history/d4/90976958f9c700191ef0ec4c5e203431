@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Welcome | EMS </title>
+</head>
+<body>
+	<div class="loader">
+		<h1>Leave Management System</h1>
+	</div>
+	
+</body>
+</html>
