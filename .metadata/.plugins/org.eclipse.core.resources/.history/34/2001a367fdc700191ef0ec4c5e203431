@@ -1,0 +1,20 @@
+#mainSec{
+	
+	border:1px solid black;
+}
+#myProfile{
+	
+	border:1px solid black;
+}
+#mngrProfile{
+	
+	border:1px solid black;
+}
+#myLeave{
+	
+	border:1px solid black;
+}
+#empLeave{
+	
+	border:1px solid black;
+}

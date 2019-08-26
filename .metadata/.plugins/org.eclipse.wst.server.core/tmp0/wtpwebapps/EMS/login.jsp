@@ -9,14 +9,16 @@
 </head>
 <body>
 	<%
-		int ID = Integer.parseInt(request.getParameter("ID"));
+		int EMP_ID = Integer.parseInt(request.getParameter("ID"));
 		String passWord =  request.getParameter("passWord");
-		boolean status = EmsBal.loginBal(ID, passWord);
+		boolean status = EmsBal.loginBal(EMP_ID, passWord);
 		
 		if(status){  
-			session.setAttribute("ID",ID);
+			String uid="";
+			uid+=EMP_ID;
+			session.setAttribute("EMP_ID",uid);
 			%>
-			<jsp:forward page="dashboard.jsp"></jsp:forward>
+			<jsp:forward page="dashboard.jsp" />
 		    
 			<%
 			} else {

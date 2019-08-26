@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.sql.Connection"/>
+<fullyQualifiedTypeName name="java.sql.ResultSet"/>
+<fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="com.hcl.ems.DaoConnection"/>
+<fullyQualifiedTypeName name="com.hcl.ems.Employ"/>
+<fullyQualifiedTypeName name="java.math.BigDecimal"/>
+<fullyQualifiedTypeName name="com.hcl.ems.EmsDao"/>
+<fullyQualifiedTypeName name="com.hcl.ems.EmsBal"/>
+</qualifiedTypeNameHistroy>
