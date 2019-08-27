@@ -12,24 +12,24 @@
 	<div id="mainSec">
 		
 		<div id="myProfile">
-		<p>
+		
 			<jsp:include page="MyAccount.jsp" />
-		</p>
+		
 		</div>
 		<div id="mngrProfile">
-		<p>
+		
 			<jsp:include page="ManagerAccount.jsp" />
-		</p>
+		
 		</div>
 		<div id="myLeave">
-		<p>
+		
 			<jsp:include page="MyLeaves.jsp" />
-		</p>
+	
 		</div>
 		<div id="empLeave">
-		<p>
-			My Reporting Employee's Pending Leave Applications Sections 
-		</p>
+		
+			<jsp:include page="EmpLeaves.jsp" />
+		
 		</div>
 	</div>
 </body>

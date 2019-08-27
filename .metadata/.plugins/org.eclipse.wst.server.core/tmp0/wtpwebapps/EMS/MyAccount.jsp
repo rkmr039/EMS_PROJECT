@@ -17,8 +17,15 @@
 	int EMP_ID = Integer.parseInt(user);
 		out.println(EMP_ID);
 		Employ emp = EmsBal.getAccountInfoBal(EMP_ID);
-	//	out.println(emp.);
-		out.println("<table><tr><th>Employ Department </th><td>"+emp.getEMP_DPT_NAME()+"</td></tr></table>"); 
+		out.println("<table>");
+		out.println("<tr><th>Employ ID </th><td>"+emp.getEmpId()+"</td></tr>");
+		out.println("<tr><th> Name</th><td>"+emp.getEmpName()+"</td></tr>");
+		out.println("<tr><th> Email</th><td>"+emp.getEmpMail()+"</td></tr>");
+		out.println("<tr><th> Department </th><td>"+emp.getEmpDpeName()+"</td></tr>");
+		out.println("<tr><th> Join Date </th><td>"+emp.getEmpDateJoined()+"</td></tr>");
+		out.println("<tr><th> Mobile No. </th><td>"+emp.getEmpMobNo()+"</td></tr>");
+		out.println("<tr><th> Leave Balance </th><td>"+emp.getEmpLeaveBalance()+"</td></tr>");
+		out.println("</table>");
 	%>
 	
 </body>

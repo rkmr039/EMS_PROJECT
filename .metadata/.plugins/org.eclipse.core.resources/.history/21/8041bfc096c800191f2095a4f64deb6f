@@ -1,0 +1,9 @@
+package com.hcl.ems;
+
+import java.util.Date;
+
+public class Leaves {
+	private int leaId;
+	private Date startDate;
+	
+}

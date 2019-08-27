@@ -1,0 +1,22 @@
+package com.hcl.ems;
+
+import java.text.ParseException;
+
+public class EmsBal {
+
+	public static boolean loginBal(int ID, String passWord) {
+		return new EmsDao().loginDao(ID, passWord);
+	}
+	
+	public static Employ getAccountInfoBal(int ID) {
+		return new EmsDao().getAccountInfoDao(ID);
+	}
+	
+	public static int generateLeaveIdBal() {
+		return new EmsDao().generateLeaveIdDao();
+	}
+	
+	public static String applyLeaveBal(Leaves leave)  {
+		return new EmsDao().applyLeaveDao(leave);
+	}
+}

@@ -4,62 +4,62 @@ import java.math.BigDecimal;
 import java.sql.Date;
 
 public class Employ {
-	private int EMP_ID;
-	private String EMP_NAME;
-	private String EMP_EMAIL;
-	private BigDecimal EMP_MOB_NO;
-	private String EMP_DPT_NAME;
-	private Date EMP_DATE_JOINED;
-	private int EMP_LEAVE_BALANCE;
-	private int EMP_MGR_ID;
+	private Integer empId;
+	private String empName;
+	private String empMail;
+	private BigDecimal empMobNo;
+	private String empDpeName;
+	private Date empDateJoined;
+	private int empLeaveBalance;
+	private int empMgrId;
 	
-	public int getEMP_MGR_ID() {
-		return EMP_MGR_ID;
+	public Integer getEmpMgrId() {
+		return empMgrId;
 	}
-	public void setEMP_MGR_ID(int eMP_MGR_ID) {
-		EMP_MGR_ID = eMP_MGR_ID;
+	public void setEmpMgrId(Integer empId) {
+		empMgrId = empId;
 	}
-	public int getEMP_ID() {
-		return EMP_ID;
+	public int getEmpId() {
+		return empId;
 	}
-	public void setEMP_ID(int eMP_ID) {
-		EMP_ID = eMP_ID;
+	public void setEmpId(int eMP_ID) {
+		empId = eMP_ID;
 	}
-	public String getEMP_NAME() {
-		return EMP_NAME;
+	public String getEmpName() {
+		return empName;
 	}
-	public void setEMP_NAME(String eMP_NAME) {
-		EMP_NAME = eMP_NAME;
+	public void setEmpName(String eMP_NAME) {
+		empName = eMP_NAME;
 	}
-	public String getEMP_EMAIL() {
-		return EMP_EMAIL;
+	public String getEmpMail() {
+		return empMail;
 	}
-	public void setEMP_EMAIL(String eMP_EMAIL) {
-		EMP_EMAIL = eMP_EMAIL;
+	public void setEmpMail(String eMP_EMAIL) {
+		empMail = eMP_EMAIL;
 	}
-	public BigDecimal getEMP_MOB_NO() {
-		return EMP_MOB_NO;
+	public BigDecimal getEmpMobNo() {
+		return empMobNo;
 	}
-	public void setEMP_MOB_NO(BigDecimal bigDecimal) {
-		EMP_MOB_NO = bigDecimal;
+	public void setEmpMobNo(BigDecimal bigDecimal) {
+		empMobNo = bigDecimal;
 	}
-	public String getEMP_DPT_NAME() {
-		return EMP_DPT_NAME;
+	public String getEmpDpeName() {
+		return empDpeName;
 	}
-	public void setEMP_DPT_NAME(String eMP_DPT_NAME) {
-		EMP_DPT_NAME = eMP_DPT_NAME;
+	public void setEmpDpeName(String eMP_DPT_NAME) {
+		empDpeName = eMP_DPT_NAME;
 	}
-	public Date getEMP_DATE_JOINED() {
-		return EMP_DATE_JOINED;
+	public Date getEmpDateJoined() {
+		return empDateJoined;
 	}
-	public void setEMP_DATE_JOINED(Date eMP_DATE_JOINED) {
-		EMP_DATE_JOINED = eMP_DATE_JOINED;
+	public void setEmpDateJoined(Date eMP_DATE_JOINED) {
+		empDateJoined = eMP_DATE_JOINED;
 	}
-	public int getEMP_LEAVE_BALANCE() {
-		return EMP_LEAVE_BALANCE;
+	public int getEmpLeaveBalance() {
+		return empLeaveBalance;
 	}
-	public void setEMP_LEAVE_BALANCE(int eMP_LEAVE_BALANCE) {
-		EMP_LEAVE_BALANCE = eMP_LEAVE_BALANCE;
+	public void setEmpLeaveBalance(int eMP_LEAVE_BALANCE) {
+		empLeaveBalance = eMP_LEAVE_BALANCE;
 	}
 	
 	

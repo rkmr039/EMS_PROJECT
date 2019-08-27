@@ -1,13 +1,13 @@
 package com.hcl.ems;
 
 public class Login {
-	private int EMP_ID;
+	private Integer empId;
 	private String pwd;
-	public int getEMP_ID() {
-		return EMP_ID;
+	public Integer getEmpId() {
+		return empId;
 	}
-	public void setEMP_ID(int EMP_ID) {
-		EMP_ID = EMP_ID;
+	public void setEmpId(Integer empId) {
+		this.empId = empId;
 	}
 	public String getPwd() {
 		return pwd;

@@ -1,0 +1,7 @@
+#applyButton{
+	position:absolute;
+	top:550px;
+	right:10px;
+	
+	
+}

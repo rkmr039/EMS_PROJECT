@@ -15,9 +15,17 @@
 	String user=(String)session.getAttribute("EMP_ID");
 	int EMP_ID = Integer.parseInt(user);
 		Employ emp = EmsBal.getAccountInfoBal(EMP_ID);
-		emp = EmsBal.getAccountInfoBal(emp.getEMP_MGR_ID());
-	   out.println("<table>");
-		out.println("<tr><th>Full Name </th><td>"+emp.getEMP_NAME()+"</td></tr></table>"); 
+		if(emp.getEmpMgrId() == 0) {
+			out.println("Manager Not Available");
+		} else {
+		emp = EmsBal.getAccountInfoBal(emp.getEmpMgrId());
+		out.println("<table>");
+		out.println("<tr><th>Manager ID </th><td>"+emp.getEmpId()+"</td></tr>");
+		out.println("<tr><th>Name</th><td>"+emp.getEmpName()+"</td></tr>");
+		out.println("<tr><th>Email</th><td>"+emp.getEmpMail()+"</td></tr>");
+		out.println("<tr><th>Mobile No. </th><td>"+emp.getEmpMobNo()+"</td></tr>"); 
+		out.println("</table>");
+		}
 	%>
 </body>
 </html>

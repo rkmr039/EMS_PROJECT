@@ -1,0 +1,20 @@
+package com.hcl.ems;
+
+public class Login {
+	private Integer empId;
+	private String pwd;
+	public int getEmpId() {
+		return empId;
+	}
+	public void setEmpId(int empId) {
+		empId = empId;
+	}
+	public String getPwd() {
+		return pwd;
+	}
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
+	}
+	
+	
+}

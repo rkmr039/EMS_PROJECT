@@ -1,0 +1,67 @@
+package com.hcl.ems;
+
+import java.math.BigDecimal;
+import java.sql.Date;
+
+public class Employ {
+	private int EMP_ID;
+	private String empName;
+	private String EMP_EMAIL;
+	private BigDecimal EMP_MOB_NO;
+	private String empDpeName;
+	private Date empDateJoined;
+	private int EMP_LEAVE_BALANCE;
+	private int EMP_MGR_ID;
+	
+	public int getEMP_MGR_ID() {
+		return EMP_MGR_ID;
+	}
+	public void setEMP_MGR_ID(int eMP_MGR_ID) {
+		EMP_MGR_ID = eMP_MGR_ID;
+	}
+	public int getEMP_ID() {
+		return EMP_ID;
+	}
+	public void setEMP_ID(int eMP_ID) {
+		EMP_ID = eMP_ID;
+	}
+	public String getEmpName() {
+		return empName;
+	}
+	public void setEmpName(String eMP_NAME) {
+		empName = eMP_NAME;
+	}
+	public String getEMP_EMAIL() {
+		return EMP_EMAIL;
+	}
+	public void setEMP_EMAIL(String eMP_EMAIL) {
+		EMP_EMAIL = eMP_EMAIL;
+	}
+	public BigDecimal getEMP_MOB_NO() {
+		return EMP_MOB_NO;
+	}
+	public void setEMP_MOB_NO(BigDecimal bigDecimal) {
+		EMP_MOB_NO = bigDecimal;
+	}
+	public String getEmpDpeName() {
+		return empDpeName;
+	}
+	public void setEmpDpeName(String eMP_DPT_NAME) {
+		empDpeName = eMP_DPT_NAME;
+	}
+	public Date getEmpDateJoined() {
+		return empDateJoined;
+	}
+	public void setEmpDateJoined(Date eMP_DATE_JOINED) {
+		empDateJoined = eMP_DATE_JOINED;
+	}
+	public int getEMP_LEAVE_BALANCE() {
+		return EMP_LEAVE_BALANCE;
+	}
+	public void setEMP_LEAVE_BALANCE(int eMP_LEAVE_BALANCE) {
+		EMP_LEAVE_BALANCE = eMP_LEAVE_BALANCE;
+	}
+	
+	
+	
+}	

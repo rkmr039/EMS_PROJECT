@@ -1,0 +1,11 @@
+package com.hcl.ems;
+
+import java.util.Date;
+
+public class Leaves {
+	private int leaId;
+	private Date startDate;
+	private Date endDate;
+	private int noDays;
+	private String reason;
+}
