@@ -138,25 +138,27 @@ public class EmsDao {
 	}
 
 	
-	public List<Leaves> getEmployLeavesDao(int id) {
-		cmd = "select EMP_MGR_ID,EMP_ID from employee";
+	public List<Leaves> getEmployLeavesDao(int mgrId) {
+		
+		
 		con = DaoConnection.getConnection();
 		List<Leaves> leaves = new ArrayList<Leaves>();
-		
+		Leaves leave = null;
 		int empId = 0;
 		try {
+			cmd = "select EMP_ID from employee where EMP_MGR_ID = ?";
 			pst = con.prepareStatement(cmd);
+			pst.setInt(1, mgrId);
 			rs = pst.executeQuery();
-			while(rs.next()) {
-				if(rs.getInt("EMP_MGR_ID") == id)
+			while(rs.next()){
 				empId = rs.getInt("EMP_ID");
-				Leaves leave = getMyLeavesDao(empId);
+				leave = EmsBal.getMyLeavesBal(empId);
 				leaves.add(leave);
 			}		
 			
-		} catch (SQLException e) {
+		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e1.printStackTrace();
 		}
 		return leaves;
 	}

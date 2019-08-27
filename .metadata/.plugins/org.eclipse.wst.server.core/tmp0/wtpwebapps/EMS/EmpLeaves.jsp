@@ -1,3 +1,4 @@
+<%@page import="com.hcl.ems.Employ"%>
 <%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@page import="com.hcl.ems.EmsBal"%>
 <%@page import="java.util.List"%>
@@ -5,6 +6,7 @@
 <%@page import="com.hcl.ems.Leaves"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -32,26 +34,17 @@
 		</tr>
 		
 		<%
-		int EMP_ID = Integer.parseInt((String)session.getAttribute("EMP_ID"));
-	 	List<Leaves> leaves = EmsBal.getEmployLeavesBal(EMP_ID);
-	 	ForEach(Leaves leave: leaves) {
-	 		
-	 	}
-						if(l.getLeaId() != 0) {
-		
-		out.println("<tr>");
-			out.println("<td> " + l.getLeaId() +" </td>");
-			out.println("<td>" + l.getNoDays() +"</td>");
-			out.println("<td>" +l.getStartDate() +"</td>");
-			out.println("<td>" +l.getEndDate() +"</td>");
-			out.println("<td>" +l.getType() +"</td>");
-			out.println("<td>" +l.getStatus()+" </td>");
-			out.println("<td>" +l.getReason()+" </td>");
-			out.println("<td>" +l.getAppliedOn()+" </td>");
-		out.println("</tr>");
-		} else {
-			out.println("<td>No Standing Leaves</td>");	
-		}%>
+		int mgrId = Integer.parseInt((String)session.getAttribute("EMP_ID"));
+	 	List<Leaves> leaves = EmsBal.getEmployLeavesBal(mgrId);
+	 	
+	 	
+	 	%>
+	 	<%-- <c:forEach var="l" items="${leaves}">
+	 		<td>
+	 			<c:out value="${l.getReason()}"/>
+	 		</td>
+	 	</c:forEach> --%>
+	 	
 	</table>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
