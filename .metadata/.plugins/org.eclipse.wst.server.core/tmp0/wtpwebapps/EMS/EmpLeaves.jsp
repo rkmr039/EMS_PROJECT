@@ -10,6 +10,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<style>
+	#applyButton{
+	position:absolute;
+	
+	right:30px;/* 
+	border:1px solid black; */
+	
+}
+</style>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
@@ -18,6 +27,7 @@
 </head>
 <body>
 	<div class="table-wrapper-scroll-y my-custom-scrollbar">
+	<form method="post" action="ApprovDenyLeaves.jsp">
 	<table class="table table-striped mb-0" border="1" bordercolor=white>
 		<tr class="table-primary">
 			<th>Employ ID</th>
@@ -35,18 +45,28 @@
 		
 		<%
 		int mgrId = Integer.parseInt((String)session.getAttribute("EMP_ID"));
-		out.println(mgrId);
 	 	List<Leaves> leaves = EmsBal.getEmployLeavesBal(mgrId);
-	 	int i = 0 ;
-	 	while(leaves.size() > 0){
-	 		Leaves l = new Leaves();
-	 		l = leaves.get(i);
-	 		out.println(l.getReason());
+	 	for(Leaves l : leaves) {
+	 		out.println("<tr>");
+	 			out.println("<td>"+ l.getEmpId() +"</td>");
+	 			Employ e = EmsBal.getAccountInfoBal(l.getEmpId());
+	 			out.println("<td>"+e.getEmpName()+"</td>");
+	 			out.println("<td>"+e.getEmpLeaveBalance()+"</td>");
+	 			out.println("<td>"+ l.getLeaId() +"</td>");
+	 			out.println("<td>"+l.getStartDate()+"</td>");
+	 			out.println("<td>"+l.getEndDate()+"</td>");
+	 			out.println("<td>"+l.getType()+"</td>");
+	 			out.println("<td>"+l.getStatus()+"</td>");
+	 			out.println("<td>"+l.getReason()+"</td>");
+	 			out.println("<td>"+l.getNoDays()+"</td>");
+	 			out.println("<td><input type='checkbox' name='leaveId' value='"+ l.getLeaId() +"'/></td>");
+	 		out.println("</tr>");
 	 	}
-	 	
 	 	%>
-	 	
-	 	
+	 <div id="applyButton">	
+	 <input  class='btn btn-primary' onClick='javascript:window.location.href=\"ApprovDenyLeaves.jsp\"' type='submit' value='Approv / Deny' />
+	 </div>	
+	 </form>	
 	</table>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

@@ -11,11 +11,28 @@ public class TestEms {
 	@Test
 	public void getEmployLeavesTest() {
 		List<Leaves> leaves = EmsBal.getEmployLeavesBal(1000);
-	
+	String result = "";
 		for (Leaves leave : leaves) {
-			System.out.println(leave.getReason());
+			result += " " + leave.getEmpId();
+			Employ e = EmsBal.getAccountInfoBal(leave.getEmpId());
+			System.out.println(e.getEmpName());
+			result += " " + e.getEmpName();
+			result += " " + e.getEmpLeaveBalance();
+			result += " " + leave.getLeaId();
+			result += " " + leave.getStartDate();
+			result += " " + leave.getEndDate();
+			result += " " + leave.getType();
+			result += " " + leave.getStatus();
+			result += " " + leave.getReason();
+            result += " " + leave.getNoDays();
+            System.out.println(result);
 		}
 	}
+	
+	/*@Test
+	public void getEmployeesLeavesTest() {
+		System.out.println(new EmpLeaves().getEmployeesLeaves(1000));
+	}*/
 	
 	
 

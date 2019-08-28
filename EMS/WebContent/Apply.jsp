@@ -24,15 +24,6 @@
 	leaves.setReason(request.getParameter("reason"));
 	out.println(EmsBal.applyLeaveBal(leaves));
 %>
-	<%-- <jsp:useBean id="b1" class="com.hcl.ems.Leaves"></jsp:useBean>
-	<jsp:setProperty property="empId" name="b1"/>
-	<jsp:setProperty property="startDate" name="b1"/>
-	<jsp:setProperty property="endDate" name="b1"/>
-	<jsp:setProperty property="noDays" name="b1"/>
-	<jsp:setProperty property="reason" name="b1"/>
-	<jsp:setProperty property="type" name="b1"/>
-	<%
-		out.println(b1.applyLeave());
-	%> --%>
+	
 </body>
 </html>

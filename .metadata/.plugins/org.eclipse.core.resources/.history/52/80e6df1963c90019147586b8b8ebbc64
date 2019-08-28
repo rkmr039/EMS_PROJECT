@@ -1,0 +1,23 @@
+package com.hcl.ems;
+
+import java.util.List;
+
+public class EmpLeaves {
+	public String getEmployeesLeaves(int mgrId) {
+		List<Leaves> leaves = EmsBal.getEmployLeavesBal(mgrId);
+		String result = "";
+		for (Leaves leave : leaves) {
+			result += " " + leave.getEmpId();
+			
+			String name;
+			result += " " + leave.getEmpId();
+			result += " " + leave.getEmpId();
+			result += " " + leave.getEmpId();
+			result += " " + leave.getEmpId();
+			result += " " + leave.getEmpId();
+			result += " " + leave.getEmpId();
+		}
+		return result;
+	}
+	
+}

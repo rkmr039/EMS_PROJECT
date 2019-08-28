@@ -163,4 +163,73 @@ public class EmsDao {
 		}
 		return leaves;
 	}
+
+	public Leaves getLeaveByIdDao(int leaveId) {
+		cmd = "select * from leave_history where LEA_ID = ?";
+		con = DaoConnection.getConnection();
+		Leaves leave = null;
+		try {
+			pst = con.prepareStatement(cmd);
+			pst.setInt(1, leaveId);
+			rs = pst.executeQuery();     
+			while(rs.next()) {
+				leave = new Leaves();
+				leave.setLeaId(rs.getInt("LEA_ID"));
+				leave.setAppliedOn(rs.getDate("LEA_APPLIED_ON"));
+				leave.setEndDate(rs.getDate("LEA_END_DATE"));
+				leave.setStartDate(rs.getDate("LEA_START_DATE"));
+				leave.setNoDays(rs.getInt("LEA_NO_OF_DAYS"));
+				leave.setReason(rs.getString("LEA_REASON"));
+				leave.setType(rs.getString("LEA_TYPE"));
+				leave.setMgrComment(rs.getString("LEA_MGR_COMMENTS"));
+				leave.setEmpId(rs.getInt("EMP_ID"));
+				leave.setStatus(rs.getString("LEA_STATUS"));
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return leave;
+	}
+
+	public boolean approveDenyLeaveDao(int leaveId, String comments, String action) {
+		boolean result = false;
+		cmd = "update leave_history set LEA_STATUS = ?, LEA_MGR_COMMENTS=? where LEA_ID =?";
+		con = DaoConnection.getConnection();
+		try{
+			
+			pst = con.prepareStatement(cmd);
+			if(action.equals("Approve")){
+				pst.setString(1, LeaveStatus.APPROVED.toString());
+			} else {
+				pst.setString(1, LeaveStatus.DENIED.toString());
+			}
+			pst.setString(2, comments);
+			pst.setInt(3, leaveId);
+			pst.executeUpdate();
+			result = true;	
+			if(action.equals("DENIED")){
+				Leaves l = EmsBal.getLeaveByIdBal(leaveId);
+				int empId = l.getEmpId();
+				int leaveBalance = l.getNoDays();
+				cmd = "update employee set EMP_LEAVE_BALANCE = EMP_LEAVE_BALANCE + ? where EMP_ID =? ";
+				pst = con.prepareStatement(cmd);
+				pst.setInt(1, leaveBalance);
+				pst.setInt(2, empId);
+				pst.executeUpdate();
+				cmd = "update leave_history set LEA_MGR_COMMENTS=? where LEA_ID =?";
+				pst = con.prepareStatement(cmd);
+				pst.setString(1, comments);
+				pst.setInt(2, leaveId);
+				pst.executeUpdate();
+			} 
+			
+		} catch(SQLException e) {
+			
+		}
+		
+		return result;
+	}
+	
 }

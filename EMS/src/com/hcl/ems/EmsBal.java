@@ -26,4 +26,12 @@ public class EmsBal {
 	public static List<Leaves> getEmployLeavesBal(int id) {
 		return new EmsDao().getEmployLeavesDao(id);
 	}
+	
+	public static Leaves getLeaveByIdBal(int leaveId) {
+		return new EmsDao().getLeaveByIdDao(leaveId);
+	}
+	
+	public static boolean approveDenyLeaveBal(int leaveId, String comments,String action) {
+		return new EmsDao().approveDenyLeaveDao(leaveId, comments, action);
+	}
 }
