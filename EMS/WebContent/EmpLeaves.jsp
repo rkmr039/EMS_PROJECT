@@ -33,7 +33,6 @@
 			<th>Employ ID</th>
 			<th>Employ Name</th>
 			<th>Employ Leave Balance</th>
-			
 			<th>Leave ID</th>	
 			<th>Start Date</th>
 			<th>End Date</th>

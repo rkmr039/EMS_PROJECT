@@ -34,4 +34,8 @@ public class EmsBal {
 	public static boolean approveDenyLeaveBal(int leaveId, String comments,String action) {
 		return new EmsDao().approveDenyLeaveDao(leaveId, comments, action);
 	}
+	
+	public static List<Leaves> getMyLeavesBal2(int id) {
+		return new EmsDao().getMyLeaves(id);
+	}
 }

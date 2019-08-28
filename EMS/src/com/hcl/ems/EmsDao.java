@@ -140,7 +140,6 @@ public class EmsDao {
 		return l;		
 	}
 
-	
 	public List<Leaves> getEmployLeavesDao(int mgrId) {
 		
 		
@@ -233,5 +232,35 @@ public class EmsDao {
 		return result;
 	}
 	
-	
+	public List<Leaves> getMyLeaves(int empId){
+		List<Leaves> leaves = new ArrayList<Leaves>();
+		cmd = "select * from leave_history where EMP_ID =?;";
+		con = DaoConnection.getConnection();
+		
+		try {
+			pst = con.prepareStatement(cmd);
+			pst.setInt(1, empId);
+			rs = pst.executeQuery();
+			
+			while(rs.next()) {
+				Leaves l = new Leaves();
+				l.setEmpId(rs.getInt("EMP_ID"));
+				l.setStartDate(rs.getDate("LEA_START_DATE"));
+				l.setEndDate(rs.getDate("LEA_END_DATE"));
+				l.setNoDays(rs.getInt("LEA_NO_OF_DAYS"));
+				l.setLeaId(rs.getInt("LEA_ID"));
+				l.setType(rs.getString("LEA_TYPE"));
+				l.setStatus(rs.getString("LEA_STATUS"));
+				l.setReason(rs.getString("LEA_REASON"));
+				l.setAppliedOn(rs.getDate("LEA_APPLIED_ON"));
+				leaves.add(l);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return leaves;		
+		
+	}
 }
