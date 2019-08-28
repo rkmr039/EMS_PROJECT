@@ -1,13 +1,14 @@
-package com.hcl.employ;
+package com.hcl.dept;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Scanner;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
-public class DataQueryDao {
+public class DataShowDao {
 	private JdbcTemplate jdbcTemplate;
 
 	public JdbcTemplate getJdbcTemplate() {
@@ -17,17 +18,16 @@ public class DataQueryDao {
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
-	public void showEmploy(){
-		String cmd = "select * from employ;";
+	public void showDept() {
+		String cmd = "select * from department;";
 		List emps = null;
 		emps = jdbcTemplate.query(cmd, new RowMapper() {
 			
 			public Object mapRow(ResultSet rs, int rowNum) throws SQLException {
-				String res = rs.getInt("empno") + "-----" +
-						rs.getString("name") + "-------"+
-						rs.getString("dept") + "-------"+
-						rs.getString("desig") + "-----"+
-						rs.getInt("basic");
+				String res = rs.getInt("deptno") + "-----" +
+						rs.getString("dname") + "-------"+
+						rs.getString("loc") + "-------"+
+						rs.getString("head");
 				return res;
 			}
 		});
@@ -35,4 +35,4 @@ public class DataQueryDao {
 			System.out.println(object);
 		}
 	}
-}	
+}
