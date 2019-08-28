@@ -5,7 +5,7 @@
 <head>
 <link rel="stylesheet" type="text/css" href="css/dashboard.css"/>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Dashboard | EMS</title>
+<title> Dashboard | EMS</title>
 </head>
 <body>
 	Welcome to <%=(String)session.getAttribute("EMP_ID") %>

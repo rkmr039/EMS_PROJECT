@@ -1,3 +1,7 @@
+<%@page import="com.hcl.ems.LeaveTypes"%>
+<%@page import="java.text.DateFormat"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -15,37 +19,50 @@
 	Employee ID : 
 	<input type="text" readonly="readonly"  value=<%=session.getAttribute("EMP_ID") %> name="empId"/>
 	<table>
+	<%
+		Date d = new Date();
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+		String sDate = sdf.format(d);
+		
+	%>
 		<tr>
 			<th >Start Date</th>
 			<td>
-				<input type='date' name="startDate"  />
+				<input type='date' name="startDate" min=<%=sDate%> required  />
             </td>
 		</tr>
 		<tr>
 			<th>End Date</th>
 			<td>
-				<input type='date' name="endDate"  />
+				<input type='date' name="endDate" min=<%=sDate%> required/>
             </td>
 		</tr>
+		
 		<tr>
 			<th>Number of Days</th>
 			<td>
-				<input type="text" name="noDays"/>
+				<input type="text" name="noDays" required/>
 			</td>
 		</tr>
 		<tr>
+	
 			<th>Leave Type</th>
 			<td>
 				<select name="type">
-					<option>EL</option>
-					<option>2</option>
+					<%
+						int len = LeaveTypes.values().length;
+						LeaveTypes[] ls = LeaveTypes.values();
+						for(LeaveTypes type: ls) {
+							out.println("<option>" + type.toString()+"</option>");
+						}
+					%>
 				</select>
 			</td>
 		</tr>
 		<tr>
 			<th>Leave Reason</th>
 			<td>
-				<input type="text" name="reason"/>
+				<input type="text" name="reason"/ required>
 			</td>
 		</tr>
 		<tr>

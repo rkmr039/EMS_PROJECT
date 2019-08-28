@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestEms" project="EMS" tests="2" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="com.hcl.ems.TestEms" time="0.313">
+    <testcase name="getEmployLeavesTest" classname="com.hcl.ems.TestEms" time="0.303"/>
+    <testcase name="getMyLeavesDaoTest" classname="com.hcl.ems.TestEms" time="0.01"/>
+  </testsuite>
+</testrun>

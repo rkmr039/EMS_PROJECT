@@ -185,3 +185,14 @@
 0:0:0:0:0:0:0:1 - - [28/Aug/2019:16:39:17 +0530] "POST /EMS/ApprovDeny.jsp HTTP/1.1" 200 5938
 0:0:0:0:0:0:0:1 - - [28/Aug/2019:16:39:20 +0530] "POST /EMS/ApprovDenyLeaves.jsp HTTP/1.1" 200 2356
 0:0:0:0:0:0:0:1 - - [28/Aug/2019:16:39:27 +0530] "POST /EMS/ApprovDeny.jsp HTTP/1.1" 200 5938
+127.0.0.1 - - [28/Aug/2019:17:02:28 +0530] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [28/Aug/2019:17:02:35 +0530] "POST /EMS/login.jsp HTTP/1.1" 200 5938
+0:0:0:0:0:0:0:1 - - [28/Aug/2019:17:02:35 +0530] "GET /EMS/css/dashboard.css HTTP/1.1" 200 326
+0:0:0:0:0:0:0:1 - - [28/Aug/2019:17:02:35 +0530] "GET /EMS/css/myLeaves.css HTTP/1.1" 200 99
+0:0:0:0:0:0:0:1 - - [28/Aug/2019:17:02:42 +0530] "GET /EMS/login.jsp HTTP/1.1" 500 2488
+0:0:0:0:0:0:0:1 - - [28/Aug/2019:17:02:46 +0530] "GET /EMS/ApprovDeny.jsp HTTP/1.1" 500 2993
+0:0:0:0:0:0:0:1 - - [28/Aug/2019:17:02:53 +0530] "POST /EMS/login.jsp HTTP/1.1" 200 5938
+0:0:0:0:0:0:0:1 - - [28/Aug/2019:17:02:58 +0530] "POST /EMS/ApprovDenyLeaves.jsp HTTP/1.1" 200 2356
+0:0:0:0:0:0:0:1 - - [28/Aug/2019:17:03:02 +0530] "POST /EMS/ApprovDeny.jsp HTTP/1.1" 200 5938
+0:0:0:0:0:0:0:1 - - [28/Aug/2019:17:04:59 +0530] "POST /EMS/ApprovDeny.jsp HTTP/1.1" 200 5938
+0:0:0:0:0:0:0:1 - - [28/Aug/2019:17:06:14 +0530] "GET /EMS/ApplyLeaves.jsp HTTP/1.1" 200 2097

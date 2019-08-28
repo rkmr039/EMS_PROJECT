@@ -62,6 +62,7 @@ public class EmsDao {
 	}
     
 	public String applyLeaveDao(Leaves leave)  {
+		
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 		String stDate=sdf.format(leave.getStartDate());
 		String endDate=sdf.format(leave.getEndDate());
@@ -76,7 +77,7 @@ public class EmsDao {
 			ls=LeaveStatus.PENDING;
 		}
 		String result="";
-		if(l.getEmpLeaveBalance() > 0) {
+		if(l.getEmpLeaveBalance() > 0 && (leave.getNoDays() > l.getEmpLeaveBalance())) {
 			
 		
 		String cmd="Insert into Leave_History(LEA_START_DATE,LEA_END_DATE,LEA_NO_OF_DAYS,LEA_REASON,"
@@ -231,5 +232,6 @@ public class EmsDao {
 		
 		return result;
 	}
+	
 	
 }
