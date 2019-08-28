@@ -35,15 +35,17 @@
 		
 		<%
 		int mgrId = Integer.parseInt((String)session.getAttribute("EMP_ID"));
+		out.println(mgrId);
 	 	List<Leaves> leaves = EmsBal.getEmployLeavesBal(mgrId);
-	 	
+	 	int i = 0 ;
+	 	while(leaves.size() > 0){
+	 		Leaves l = new Leaves();
+	 		l = leaves.get(i);
+	 		out.println(l.getReason());
+	 	}
 	 	
 	 	%>
-	 	<%-- <c:forEach var="l" items="${leaves}">
-	 		<td>
-	 			<c:out value="${l.getReason()}"/>
-	 		</td>
-	 	</c:forEach> --%>
+	 	
 	 	
 	</table>
 	</div>

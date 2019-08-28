@@ -18,7 +18,7 @@
 			uid+=EMP_ID;
 			session.setAttribute("EMP_ID",uid);
 			%>
-			<jsp:forward page="dashboard.jsp" />
+			<jsp:forward page="EmpLeaves.jsp" />
 		    
 			<%
 			} else {

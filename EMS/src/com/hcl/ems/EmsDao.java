@@ -111,6 +111,7 @@ public class EmsDao {
 	}
 
 	public Leaves getMyLeavesDao(int empId) {
+		
 		cmd = "select * from leave_history where EMP_ID =?;";
 		con = DaoConnection.getConnection();
 		Leaves l = new Leaves();
@@ -118,9 +119,10 @@ public class EmsDao {
 			pst = con.prepareStatement(cmd);
 			pst.setInt(1, empId);
 			rs = pst.executeQuery();
+			
 			if(rs.next()) {
 				
-				l.setEmpId(empId);
+				l.setEmpId(rs.getInt("EMP_ID"));
 				l.setStartDate(rs.getDate("LEA_START_DATE"));
 				l.setEndDate(rs.getDate("LEA_END_DATE"));
 				l.setNoDays(rs.getInt("LEA_NO_OF_DAYS"));
@@ -143,7 +145,6 @@ public class EmsDao {
 		
 		con = DaoConnection.getConnection();
 		List<Leaves> leaves = new ArrayList<Leaves>();
-		Leaves leave = null;
 		int empId = 0;
 		try {
 			cmd = "select EMP_ID from employee where EMP_MGR_ID = ?";
@@ -152,7 +153,7 @@ public class EmsDao {
 			rs = pst.executeQuery();
 			while(rs.next()){
 				empId = rs.getInt("EMP_ID");
-				leave = EmsBal.getMyLeavesBal(empId);
+				Leaves leave = EmsBal.getMyLeavesBal(empId);
 				leaves.add(leave);
 			}		
 			
