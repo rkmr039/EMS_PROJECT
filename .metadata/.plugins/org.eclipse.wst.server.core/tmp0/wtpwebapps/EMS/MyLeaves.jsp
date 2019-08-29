@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@page import="com.hcl.ems.EmsDao"%>
 <%@page import="com.hcl.ems.Leaves"%>
 <%@page import="com.hcl.ems.EmsBal"%>
@@ -10,7 +11,7 @@
 <style>
 .my-custom-scrollbar {
 position: relative;
-height: 200px;
+
 overflow: auto;
 }
 .table-wrapper-scroll-y {
@@ -38,27 +39,34 @@ display: block;
 		</tr>
 		<%
 		int EMP_ID = Integer.parseInt((String)session.getAttribute("EMP_ID"));
-	Leaves l = new EmsDao().getMyLeavesDao(EMP_ID);
-						if(l.getLeaId() != 0) {
-		
-		out.println("<tr>");
-			out.println("<td> " + l.getLeaId() +" </td>");
-			out.println("<td>" + l.getNoDays() +"</td>");
-			out.println("<td>" +l.getStartDate() +"</td>");
-			out.println("<td>" +l.getEndDate() +"</td>");
-			out.println("<td>" +l.getType() +"</td>");
-			out.println("<td>" +l.getStatus()+" </td>");
-			out.println("<td>" +l.getReason()+" </td>");
-			out.println("<td>" +l.getAppliedOn()+" </td>");
-		out.println("</tr>");
-		} else {
-			out.println("<td>No Standing Leaves</td>");	
-		}%>
+		List<Leaves> leaves = EmsBal.getMyLeavesBal2(EMP_ID);
+		if(leaves.size() != 0) {
+		for(Leaves l : leaves) {
+				out.println("<tr>");
+					out.println("<td> " + l.getLeaId() +" </td>");
+					out.println("<td>" + l.getNoDays() +"</td>");
+					out.println("<td>" +l.getStartDate() +"</td>");
+					out.println("<td>" +l.getEndDate() +"</td>");
+					out.println("<td>" +l.getType() +"</td>");
+					out.println("<td>" +l.getStatus()+" </td>");
+					out.println("<td>" +l.getReason()+" </td>");
+					out.println("<td>" +l.getAppliedOn()+" </td>");
+					if(l.getMgrComment() == null) {
+						out.println("<td>No Comments</td>");
+					} else {
+					out.println("<td>" +l.getMgrComment()+" </td>");}
+				out.println("</tr>");	
+		}
+		}  else {
+		   out.println("<td>No Standing Leaves</td>");	
+	    } 
+		%>
 		
 	</table>
-	</div>
+	
 	<div id="applyButton">
 	<input  class="btn btn-primary" onClick="javascript:window.location.href='ApplyLeaves.jsp'" type="submit" value="New Application" />
+	</div>
 	</div>
 	
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

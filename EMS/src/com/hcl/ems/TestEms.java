@@ -8,7 +8,7 @@ import org.junit.Test;
 
 public class TestEms {
 
-	/*@Test
+	@Test
 	public void getEmployLeavesTest() {
 		List<Leaves> leaves = EmsBal.getEmployLeavesBal(1000);
 	String result = "";
@@ -28,9 +28,9 @@ public class TestEms {
             result += " " + leave.getNoDays();
             System.out.println(result);
 		}
-	}*/
+	}
 	
-	@Test
+	/*@Test
 	public void getMyLeavesTest(){
 		List<Leaves> leaves = EmsBal.getMyLeavesBal2(1000);
 		
@@ -50,12 +50,12 @@ public class TestEms {
             result += " " + leave.getNoDays();
             System.out.println(result);
 		}
-	}
-	@Test // working fine
+	}*/
+/*	@Test // working fine
 	public void getMyLeaveDaoTest() {
 		Leaves l = EmsBal.getMyLeavesBal2(1000).get(1);
 		System.out.println(l.getReason());
-	}
+	}*/
 	
 /*	@Test // working fine
 	public void getMyLeavesDaoTest() {

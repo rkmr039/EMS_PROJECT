@@ -27,10 +27,12 @@
 	if(endDate.equals(sDate) && noDays != 1) {
 		%>
 		<jsp:include page="ApplyLeaves.jsp"></jsp:include>
-		<%out.println("Number of Days should be one in case of Same Start and End Date....");
+		<%
+		out.println("Number of Days should be one in case of Same Start and End Date....");
 	}
-	else if((endDate.getDate() - sDate.getDate()) <  noDays - 1 ) {
+	else if((endDate.getDate() - sDate.getDate()) !=  noDays-1 ) {
 		//  if noDayds is less the selected date range 
+		// out.println(" "+  endDate.getDate() + " "+   sDate.getDate() + " "+  noDays);
 		%>
 		<jsp:include page="ApplyLeaves.jsp"></jsp:include>
 		<% out.println("Number of Days is greater the the selected date range... ");
@@ -39,11 +41,13 @@
 		if(EmsBal.applyLeaveBal(leaves) == "Insufficient Leave Balance") {
 			%>
 			<jsp:include page="ApplyLeaves.jsp"></jsp:include>
-			<% out.println("Insufficient Leave Balance");
+			<% 
+				/* response.sendRedirect("ApplyLeaves.jsp"); */
+			out.println("Insufficient Leave Balance");
 		} else {
 			EmsBal.applyLeaveBal(leaves);
 			%>
-			<jsp:include page="dashboard.jsp"></jsp:include>
+			<jsp:forward page="dashboard.jsp"></jsp:forward>
 			<%
 		}
 	}

@@ -2,24 +2,24 @@ div {
 	margin:10px;
 }
 #mainSec{
-	
+	height:auto;
 	border:1px solid black;
 }
 #myProfile{
-	height:300px;
+	height:200px;
 	width:800px;
 	border:1px solid black;
 	float:left;
 }
 #mngrProfile{
-	height:300px;
+	height:200px;
 	border:1px solid black;
 }
 #myLeave{
-	height:250px;
+	height:auto;
 	border:1px solid black;
 }
 #empLeave{
-	height:250px;
+	height:auto;
 	border:1px solid black;
 }

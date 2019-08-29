@@ -19,7 +19,7 @@
 			out.println("Manager Not Available");
 		} else {
 		emp = EmsBal.getAccountInfoBal(emp.getEmpMgrId());
-		out.println("<table>");
+		out.println("<table border='1'>");
 		out.println("<tr><th>Manager ID </th><td>"+emp.getEmpId()+"</td></tr>");
 		out.println("<tr><th>Name</th><td>"+emp.getEmpName()+"</td></tr>");
 		out.println("<tr><th>Email</th><td>"+emp.getEmpMail()+"</td></tr>");

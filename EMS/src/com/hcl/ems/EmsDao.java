@@ -77,7 +77,7 @@ public class EmsDao {
 			ls=LeaveStatus.PENDING;
 		}
 		String result="";
-		if(l.getEmpLeaveBalance() > 0 && (leave.getNoDays() > l.getEmpLeaveBalance())) {
+		if(l.getEmpLeaveBalance() > 0 && !(leave.getNoDays() > l.getEmpLeaveBalance())) {
 			
 		
 		String cmd="Insert into Leave_History(LEA_START_DATE,LEA_END_DATE,LEA_NO_OF_DAYS,LEA_REASON,"
@@ -122,7 +122,6 @@ public class EmsDao {
 			rs = pst.executeQuery();
 			
 			if(rs.next()) {
-				
 				l.setEmpId(rs.getInt("EMP_ID"));
 				l.setStartDate(rs.getDate("LEA_START_DATE"));
 				l.setEndDate(rs.getDate("LEA_END_DATE"));
@@ -132,6 +131,9 @@ public class EmsDao {
 				l.setStatus(rs.getString("LEA_STATUS"));
 				l.setReason(rs.getString("LEA_REASON"));
 				l.setAppliedOn(rs.getDate("LEA_APPLIED_ON"));
+				l.setMgrComment(rs.getString("LEA_MGR_COMMENTS"));
+			} else {
+				l = null;
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -140,6 +142,7 @@ public class EmsDao {
 		return l;		
 	}
 
+	
 	public List<Leaves> getEmployLeavesDao(int mgrId) {
 		
 		
@@ -153,8 +156,13 @@ public class EmsDao {
 			rs = pst.executeQuery();
 			while(rs.next()){
 				empId = rs.getInt("EMP_ID");
-				Leaves leave = EmsBal.getMyLeavesBal(empId);
-				leaves.add(leave);
+				// Leaves leave = EmsBal.getMyLeavesBal(empId);
+				List<Leaves> empLeaves = EmsBal.getMyLeavesBal2(empId);
+				for (Leaves leave : empLeaves) {
+					if(leave != null){
+						leaves.add(leave);
+					}
+				}
 			}		
 			
 		} catch (SQLException e1) {
@@ -236,31 +244,28 @@ public class EmsDao {
 		List<Leaves> leaves = new ArrayList<Leaves>();
 		cmd = "select * from leave_history where EMP_ID =?;";
 		con = DaoConnection.getConnection();
-		
+
 		try {
 			pst = con.prepareStatement(cmd);
 			pst.setInt(1, empId);
 			rs = pst.executeQuery();
-			
-			while(rs.next()) {
-				Leaves l = new Leaves();
-				l.setEmpId(rs.getInt("EMP_ID"));
-				l.setStartDate(rs.getDate("LEA_START_DATE"));
-				l.setEndDate(rs.getDate("LEA_END_DATE"));
-				l.setNoDays(rs.getInt("LEA_NO_OF_DAYS"));
-				l.setLeaId(rs.getInt("LEA_ID"));
-				l.setType(rs.getString("LEA_TYPE"));
-				l.setStatus(rs.getString("LEA_STATUS"));
-				l.setReason(rs.getString("LEA_REASON"));
-				l.setAppliedOn(rs.getDate("LEA_APPLIED_ON"));
-				leaves.add(l);
-				
-			}
+				while(rs.next()) {
+					Leaves l = new Leaves();
+					l.setEmpId(rs.getInt("EMP_ID"));
+					l.setStartDate(rs.getDate("LEA_START_DATE"));
+					l.setEndDate(rs.getDate("LEA_END_DATE"));
+					l.setNoDays(rs.getInt("LEA_NO_OF_DAYS"));
+					l.setLeaId(rs.getInt("LEA_ID"));
+					l.setType(rs.getString("LEA_TYPE"));
+					l.setStatus(rs.getString("LEA_STATUS"));
+					l.setReason(rs.getString("LEA_REASON"));
+					l.setAppliedOn(rs.getDate("LEA_APPLIED_ON"));
+					leaves.add(l);
+				}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+		// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return leaves;		
-		
-	}
+		return leaves;	
+  }	
 }

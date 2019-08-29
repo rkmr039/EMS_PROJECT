@@ -28,7 +28,7 @@
 		</div>
 		<div id="empLeave">
 		
-			<jsp:include page="EmpLeaves.jsp" />
+			<jsp:include page="EmpLeaves2.jsp" />
 		
 		</div>
 	</div>

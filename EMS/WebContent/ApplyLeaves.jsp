@@ -9,7 +9,22 @@
 <head>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
+<script >
+function setEndDate(e){
+	 var eDate = e.target.value;
+	 eDateInput.min = eDate;
+	}
+function setNoDays(e){
+	var d1 = eDateInput.value;
+	var date1 = new Date(d1);
+	var d2 = sDateInput.value;
+	var date2 = new Date(d2);
+	   var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+       var diffDays = Math.abs((date1.getTime() - date2.getTime()) / (oneDay));
+       // alert(diffDays); 
+      document.getElementById("noDays").value = diffDays+1;
+}	
+</script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Apply leave | EMS</title>
 </head>
@@ -28,20 +43,20 @@
 		<tr>
 			<th >Start Date</th>
 			<td>
-				<input type='date' name="startDate" min=<%=sDate%> required  />
+				<input type='date' name="startDate" id="sDateInput" min=<%=sDate%> required onchange="setEndDate(event);" />
             </td>
 		</tr>
 		<tr>
 			<th>End Date</th>
 			<td>
-				<input type='date' name="endDate" min=<%=sDate%> required/>
+				<input type='date' name="endDate" id="eDateInput" required onchange="setNoDays(event);" />
             </td>
 		</tr>
 		
 		<tr>
 			<th>Number of Days</th>
 			<td>
-				<input type="text" name="noDays" required/>
+				<input type="text" name="noDays" id="noDays" required/>
 			</td>
 		</tr>
 		<tr>
@@ -71,6 +86,7 @@
 		</tr>
 	</table>
 	</form>
+	
 	
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
