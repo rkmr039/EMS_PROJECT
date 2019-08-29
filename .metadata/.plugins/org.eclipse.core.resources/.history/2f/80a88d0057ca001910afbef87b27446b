@@ -37,7 +37,7 @@ height: 100.1&#37;
 		} catch (NumberFormatException e)
 		{
 			%>
-				<jsp:forward page="dashboard.jsp"></jsp:forward>
+				
 			<%
 		}
 		Leaves l = EmsBal.getLeaveByIdBal(leaveId);

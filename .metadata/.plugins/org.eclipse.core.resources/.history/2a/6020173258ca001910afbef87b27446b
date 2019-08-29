@@ -84,7 +84,7 @@ function checkOnlyOne(b){
 		 			out.println("<td colspan='2'>"+l.getType()+"</td>");
 		 			out.println("<td colspan='1'>"+l.getStatus()+"</td>");
 		 			out.println("<td colspan='3'>"+l.getReason()+"</td>");
-		 			out.println("<td><input  class='daychecks' onclick='checkOnlyOne(this.value);' type='checkbox' name='leaveId' value='"+ l.getLeaId() +"'/></td>");
+		 			out.println("<td><input type='checkbox' name='leaveId' value='"+ l.getLeaId() +"'/></td>");
 	 			out.println("</tr>"); 
 	 			idPrevious = l.getEmpId();
 	 	}
@@ -94,7 +94,7 @@ function checkOnlyOne(b){
 	 	if(leaves.size() == 0) {
 	 %>	
 	 <div id="applyButton">	
-	 <input  class='btn btn-primary' disabled  onClick='javascript:window.location.href=\"ApprovDenyLeaves.jsp\"' type='submit' value='Approv / Deny' />
+	 <input  class='btn btn-primary' disabled onFocus="showMessage()" onClick='javascript:window.location.href=\"ApprovDenyLeaves.jsp\"' type='submit' value='Approv / Deny' />
 	 </div>	<%
 	 } else {%>
 	 <div id="applyButton">	

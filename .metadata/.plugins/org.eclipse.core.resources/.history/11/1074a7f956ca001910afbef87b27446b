@@ -36,9 +36,7 @@ height: 100.1&#37;
 			leaveId = Integer.parseInt(checked);
 		} catch (NumberFormatException e)
 		{
-			%>
-				<jsp:forward page="dashboard.jsp"></jsp:forward>
-			<%
+			
 		}
 		Leaves l = EmsBal.getLeaveByIdBal(leaveId);
 	 	Employ e = EmsBal.getAccountInfoBal(l.getEmpId());
