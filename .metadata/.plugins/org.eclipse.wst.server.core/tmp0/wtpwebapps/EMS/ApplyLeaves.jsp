@@ -12,11 +12,22 @@
 <script >
 function setEndDate(e){
 	 var eDate = e.target.value;
+	var date = new Date(eDate);
+	if(date.getDay() == 0 || date.getDay() == 6) {
+		alert("It's Weekend...Select Another date");
+		document.getElementById("sDateInput").value = "";
+	}
+	
 	 eDateInput.min = eDate;
 	}
 function setNoDays(e){
 	var d1 = eDateInput.value;
 	var date1 = new Date(d1);
+	if(date1.getDay() == 0 || date1.getDay() == 6) {
+		alert("It's Weekend...Select Another date");
+		document.getElementById("eDateInput").value = "";
+		return;
+	}
 	var d2 = sDateInput.value;
 	var date2 = new Date(d2);
 	   var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
@@ -25,41 +36,61 @@ function setNoDays(e){
       document.getElementById("noDays").value = diffDays+1;
 }	
 </script>
+<style>
+body {
+    background:#333;
+}
+#mainDiv{
+	color:black;
+	background-color:#EEE;
+	top:0;
+	bottom:0;
+	right:0;
+	left:0;
+	margin:auto;
+	position:absolute;
+}
+</style>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Apply leave | EMS</title>
 </head>
 <body>
-	<p id="page">Apply Leave</p>
+	<table class="container border rounded w-50 h-50" id="mainDiv">
 	<form method="get" action="Apply.jsp">
-	Employee ID : 
-	<input type="text" readonly="readonly"  value=<%=session.getAttribute("EMP_ID") %> name="empId"/>
-	<table>
+	<div class="row ">
+		<tr style="text-align:center">
+			<th colspan="2"><p id="page">Apply Leave</p></th>
+		</tr>
+		<tr class="form-froup">
+			<th>Employee ID :<th> 
+			<input type="text" readonly="readonly" class="form-control" value=<%=session.getAttribute("EMP_ID") %> name="empId"/>
+		</tr>
 	<%
 		Date d = new Date();
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 		String sDate = sdf.format(d);
 		
 	%>
-		<tr>
+		<tr class="form-froup">
 			<th >Start Date</th>
 			<td>
-				<input type='date' name="startDate" id="sDateInput" min=<%=sDate%> required onchange="setEndDate(event);" />
+				<input type='date' name="startDate" class="form-control" id="sDateInput" min=<%=sDate%> required onchange="setEndDate(event);" />
             </td>
 		</tr>
-		<tr>
+		<tr class="form-froup">
 			<th>End Date</th>
 			<td>
-				<input type='date' name="endDate" id="eDateInput" required onchange="setNoDays(event);" />
+				<input type='date' name="endDate" class="form-control" id="eDateInput" required onchange="setNoDays(event);" />
             </td>
 		</tr>
 		
-		<tr>
+		<tr class="form-froup">
 			<th>Number of Days</th>
 			<td>
-				<input type="text" name="noDays" id="noDays" required/>
+				<input type="text" name="noDays" class="form-control" id="noDays" required/>
 			</td>
 		</tr>
-		<tr>
+		<tr class="form-froup">
 	
 			<th>Leave Type</th>
 			<td>
@@ -68,26 +99,29 @@ function setNoDays(e){
 						int len = LeaveTypes.values().length;
 						LeaveTypes[] ls = LeaveTypes.values();
 						for(LeaveTypes type: ls) {
-							out.println("<option>" + type.toString()+"</option>");
+							out.println("<option class='form-control'>" + type.toString()+"</option>");
 						}
 					%>
 				</select>
 			</td>
 		</tr>
-		<tr>
+		<tr class="form-froup">
 			<th>Leave Reason</th>
 			<td>
-				<input type="text" name="reason"/ required>
+				<input type="text" class="form-control" name="reason"/ required>
 			</td>
 		</tr>
-		<tr>
+		<tr  >
 			<td><input class="btn btn-primary" type="submit" value="Apply" name="apply"/></td>
 			<td><input class="btn btn-primary" type="reset" onClick="javascript:window.location.href='dashboard.jsp'" value="Cancel" name="cancel"/></td>
 		</tr>
+		<tr>
+		</tr>
+			
+		</tr>
+		</div>
+			</form>
 	</table>
-	</form>
-	
-	
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 

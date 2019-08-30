@@ -22,13 +22,12 @@
 		
 		</div>
 		<div id="myLeave">
-		
 			<jsp:include page="MyLeaves.jsp" />
 	
 		</div>
 		<div id="empLeave">
 		
-			<jsp:include page="EmpLeaves2.jsp" />
+			<jsp:include page="EmpLeaves.jsp" />
 		
 		</div>
 	</div>

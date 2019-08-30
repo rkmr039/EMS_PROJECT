@@ -42,7 +42,14 @@ display: block;
 		List<Leaves> leaves = EmsBal.getMyLeavesBal2(EMP_ID);
 		if(leaves.size() != 0) {
 		for(Leaves l : leaves) {
+			if(l.getStatus().equals("APPROVED")) {
+				out.println("<tr class='table-success'>");
+			} else if(l.getStatus().equals("DENIED")) {
+				out.println("<tr class='table-danger'>");
+			}
+			else {
 				out.println("<tr>");
+			}
 					out.println("<td> " + l.getLeaId() +" </td>");
 					out.println("<td>" + l.getNoDays() +"</td>");
 					out.println("<td>" +l.getStartDate() +"</td>");

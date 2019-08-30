@@ -8,19 +8,18 @@
 <html>
 <head>
 <style>
-#firstDiv{
-float:left;
-width:50%;
-background-color: #DDD;
-height: 100.1&#37;
+body {
+    background:#333;
 }
-#secondDiv{
+#mainDiv{
+	top:0;
+	right:0;
+	left:0;
+	bottom:0;
+	margin:auto;
+	position:absolute;
+}
 
-float:left;
-width:50%;
-background-color: #CCC;
-height: 100.1&#37;
-}
 </style>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -34,7 +33,7 @@ height: 100.1&#37;
 		int leaveId = 0;
 		try {
 			leaveId = Integer.parseInt(checked);
-		} catch (NumberFormatException e)
+		} catch (NumberFormatException | NullPointerException e)
 		{
 			%>
 				<jsp:forward page="dashboard.jsp"></jsp:forward>
@@ -44,43 +43,53 @@ height: 100.1&#37;
 	 	Employ e = EmsBal.getAccountInfoBal(l.getEmpId());
 	 	
 	 	%>
-	<form method="post" action="ApprovDeny.jsp">
-	<div id="firstDiv">
-	<input style="display:none" value="<%=l.getLeaId() %>" name="leaveId"/>
-	<table>
-		<tr>	<th>Employ Id:</th>	<td><%=l.getEmpId() %></td></tr>
-		<tr>	<th>Employ Name:</th> <td><%=e.getEmpName() %></td></tr>
-		<tr>	<th>Leave Balance:</th> <td><%=e.getEmpLeaveBalance() %></td></tr>
-		<tr>	<th>Comments:</th> <td><input type="text" name="comments"/></td></tr>
+	<form method="post" action="ApprovDeny.jsp"> 	
+	<div class="container border w-75 h-50" id="mainDiv">
+		<div class="row">
+			<div class="col-sm-12" style="text-align:center"><h1>Approve Deny Leaves</h1></div>
+		</div>
+		<div class="row mt-4">
+			<input style="display:none" value="<%=l.getLeaId() %>" name="leaveId"></input>
+		</div>
+		<div class="row">
+			<div class="col-sm-3">Employ Id:</div>
+			<div class="col-sm-3"><%=l.getEmpId() %></div>
+			<div class="col-sm-3">Start Date</div>
+			<div class="col-sm-3"><%=l.getStartDate() %></div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3">Employ Name:</div>
+			<div class="col-sm-3"><%=e.getEmpName() %></div>
+			<div class="col-sm-3">End Date</div>
+			<div class="col-sm-3"><%=l.getEndDate() %></div>
+			
+		</div>
+		<div class="row">
+			<div class="col-sm-3">Leave Balance:</div>
+			<div class="col-sm-3"><%=e.getEmpLeaveBalance() %></div>
+			<div class="col-sm-3">Number of Days</div>
+			<div class="col-sm-3"><%=l.getNoDays() %></div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3">Comments:</div>
+			<div class="col-sm-3" ><input type="text" name="comments"></div>
+			<div class="col-sm-3">Leave Type</div>
+			<div class="col-sm-3"><%=l.getType() %></div>
+			
+		</div>
+		<div class="row">
+			<div class="col-sm-3"></div>
+			<div class="col-sm-3"></div>
+			<div class="col-sm-3">Leave Reason</div>
+			<div class="col-sm-3"><%=l.getReason() %></div>
+		</div>
+		<div class="row" style="margin-top:50px;">
+			<div class="col-sm-3 "><input class="btn btn-primary" type="submit" value="Approve" name="approv"/></div>
+			<div class="col-sm-3 "><input class="btn btn-primary" type="submit" value="Deny" name="approv"/></div>
+			<div class="col-sm-3 "><input class="btn btn-primary" type="reset" onClick="javascript:window.location.href='dashboard.jsp'" value="Cancel" name="cancel"/></div>
+		</div>
+	</div> 	
 		
-	</table>
-	</div>
-	<div id="secondDiv">
-	<table>	
-		<tr>
-			<th >Start Date</th><td><%=l.getStartDate() %> </td>
-		</tr>
-		<tr>
-			<th>End Date</th><td><%=l.getEndDate() %></td>
-		</tr>
-		<tr>
-			<th>Number of Days</th><td><%=l.getNoDays() %></td>
-		</tr>
-		<tr>
-			<th>Leave Type</th>	<td><%=l.getType() %></td>
-		</tr>
-		<tr>
-			<th>Leave Reason</th><td><%=l.getReason() %></td>
-		</tr>
-		
-	</table>
-	<br/><br/><br/>
-	</div>
-    <center>
-	<input class="btn btn-primary" type="submit" value="Approve" name="approv"/>
-	<input class="btn btn-primary" type="submit" value="Deny" name="approv"/>
-	</center>
-	<input class="btn btn-primary" type="reset" onClick="javascript:window.location.href='dashboard.jsp'" value="Cancel" name="cancel"/>	
 	</form>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
